@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SkillThali – Your Skills, Your Future</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<nav id="mainNav">
+  <div class="nav-logo">
+    <div class="logo-circle">ST</div>
+    <span class="logo-text">SkillThali</span>
+  </div>
+  <div class="nav-links">
+    <a href="#" onclick="showSection('home')">Home</a>
+    <a href="#" onclick="showSection('about')">About</a>
+    <a href="#" onclick="showSection('categories')">Categories</a>
+    <a href="#" onclick="openAuth('login')" class="btn-ghost">Login</a>
+    <a href="#" onclick="openAuth('signup')" class="btn-nav">Sign Up</a>
+  </div>
+</nav>
+
+<!-- ========== HOME SECTION ========== -->
+<section id="home" class="section active">
+
+  <!-- Hero -->
+  <div class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4"/>
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">🍽️ India's Student Freelancing Platform</div>
+      <h1 class="hero-heading">Your Skills,<br/><span class="accent">Your Earnings,</span><br/>Your Future</h1>
+      <p class="hero-sub">Connect. Create. Earn. SkillThali serves the right opportunities to hungry, talented students.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="openAuth('signup','student')">🎓 I am a Student</button>
+        <button class="btn-secondary" onclick="openAuth('signup','client')">💼 I am a Client</button>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll to explore</span>
+      <div class="scroll-line"></div>
+    </div>
+  </div>
+
+  <!-- Categories Section -->
+  <div id="categories" class="section-block">
+    <div class="section-header">
+      <div class="section-tag">What We Serve</div>
+      <h2>Browse by Category</h2>
+      <p>Four flavourful categories, countless opportunities.</p>
+    </div>
+    <div class="categories-grid">
+      <div class="cat-card" onclick="openCategory('codethali')">
+        <div class="cat-icon">💻</div>
+        <h3>CodeThali</h3>
+        <p>Web, App & Debug services</p>
+        <div class="cat-arrow">→</div>
+      </div>
+      <div class="cat-card" onclick="openCategory('creatix')">
+        <div class="cat-icon">🎨</div>
+        <h3>Creatix</h3>
+        <p>Design, Logo & Video Editing</p>
+        <div class="cat-arrow">→</div>
+      </div>
+      <div class="cat-card" onclick="openCategory('quickbites')">
+        <div class="cat-icon">⚡</div>
+        <h3>QuickBites</h3>
+        <p>Resume, LinkedIn & Portfolio</p>
+        <div class="cat-arrow">→</div>
+      </div>
+      <div class="cat-card" onclick="openCategory('teamup')">
+        <div class="cat-icon">🤝</div>
+        <h3>TeamUp</h3>
+        <p>Projects, Hackathons & Startups</p>
+        <div class="cat-arrow">→</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category Detail Panel -->
+  <div id="catPanel" class="cat-panel hidden">
+    <div class="cat-panel-inner">
+      <button class="panel-close" onclick="closeCategory()">✕ Close</button>
+      <div class="cat-panel-header">
+        <span id="panelIcon" class="panel-icon"></span>
+        <h2 id="panelTitle"></h2>
+        <p id="panelSubtitle"></p>
+      </div>
+      <div id="panelItems" class="panel-items"></div>
+      <button class="btn-primary mt2" onclick="openAuth('signup')">Get Started →</button>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <div id="about" class="section-block alt-bg">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-tag">Our Story</div>
+        <h2>About SkillThali</h2>
+        <p>SkillThali is a student-focused freelancing platform designed to connect talented students with clients who need affordable and quality services. It provides a simple and secure system where clients can post projects and students can apply and communicate easily.</p>
+        <p>The platform enables students to showcase their skills — coding, graphic design, content creation — while also providing opportunities to work on real-world projects and gain practical experience.</p>
+        <p>SkillThali aims to help students build strong portfolios, create earning opportunities, and improve placement readiness by giving hands-on industry exposure.</p>
+      </div>
+      <div class="about-cards">
+        <div class="stat-card"><span class="stat-num">🎓</span><span>Portfolio Building</span></div>
+        <div class="stat-card"><span class="stat-num">💰</span><span>Real Earnings</span></div>
+        <div class="stat-card"><span class="stat-num">🚀</span><span>Industry Exposure</span></div>
+        <div class="stat-card"><span class="stat-num">🔗</span><span>Smart Connections</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Unique Section -->
+  <div class="section-block">
+    <div class="section-header">
+      <div class="section-tag">Why Us?</div>
+      <h2>What Makes SkillThali Unique</h2>
+    </div>
+    <div class="unique-grid">
+      <div class="unique-card">
+        <div class="u-icon">🏠</div>
+        <h4>Beginner-Friendly</h4>
+        <p>No overwhelming competition like Fiverr. Start comfortably as a beginner.</p>
+      </div>
+      <div class="unique-card">
+        <div class="u-icon">🎯</div>
+        <h4>Focused Environment</h4>
+        <p>Student-first space with meaningful work opportunities, not noise.</p>
+      </div>
+      <div class="unique-card">
+        <div class="u-icon">📚</div>
+        <h4>Learn by Doing</h4>
+        <p>Gain practical experience rather than struggling to get opportunities.</p>
+      </div>
+      <div class="unique-card">
+        <div class="u-icon">🤝</div>
+        <h4>Direct Engagement</h4>
+        <p>Students engage directly with clients — no middlemen, no confusion.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <div class="logo-circle sm">ST</div>
+        <span>SkillThali</span>
+      </div>
+      <p>© 2025 SkillThali. Built for Students, by Students.</p>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</section>
+
+<!-- ========== AUTH MODAL ========== -->
+<div id="authModal" class="modal-overlay hidden">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+
+    <!-- Step 1: Login / Signup -->
+    <div id="authStep1" class="auth-step active">
+      <div class="modal-logo"><div class="logo-circle">ST</div> SkillThali</div>
+      <h2 id="authTitle">Welcome Back</h2>
+      <p id="authSub">Login to your account</p>
+      <div class="form-group">
+        <input type="email" id="authEmail" placeholder="Email Address" class="form-input"/>
+      </div>
+      <div class="form-group">
+        <input type="password" id="authPass" placeholder="Password" class="form-input"/>
+      </div>
+      <button class="btn-primary full" onclick="nextAuthStep()">Continue →</button>
+      <p class="auth-switch" id="authSwitchText">Don't have an account? <a href="#" onclick="toggleAuth()">Sign Up</a></p>
+    </div>
+
+    <!-- Step 2: Role selection -->
+    <div id="authStep2" class="auth-step">
+      <h2>Who are you?</h2>
+      <p>Help us personalise your experience</p>
+      <div class="role-cards">
+        <div class="role-card" onclick="selectRole('student')">
+          <span>🎓</span>
+          <h3>Student</h3>
+          <p>Find tasks, earn, grow</p>
+        </div>
+        <div class="role-card" onclick="selectRole('client')">
+          <span>💼</span>
+          <h3>Client</h3>
+          <p>Post tasks, hire talent</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3a: Student Onboarding -->
+    <div id="authStep3S" class="auth-step">
+      <h2>🎓 Tell us about yourself</h2>
+      <p>We'll match you with the best tasks</p>
+      <div class="form-group">
+        <label>Primary Skills</label>
+        <div class="tag-group" id="skillTags">
+          <span class="tag" onclick="toggleTag(this)">Coding</span>
+          <span class="tag" onclick="toggleTag(this)">Design</span>
+          <span class="tag" onclick="toggleTag(this)">PPT</span>
+          <span class="tag" onclick="toggleTag(this)">Video Editing</span>
+          <span class="tag" onclick="toggleTag(this)">Poster</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Experience Level</label>
+        <div class="radio-group">
+          <label class="radio-opt"><input type="radio" name="exp" value="Beginner"/> Beginner</label>
+          <label class="radio-opt"><input type="radio" name="exp" value="Intermediate"/> Intermediate</label>
+          <label class="radio-opt"><input type="radio" name="exp" value="Advanced"/> Advanced</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Comfortable with real-world projects?</label>
+        <div class="radio-group">
+          <label class="radio-opt"><input type="radio" name="rw" value="Yes"/> Yes!</label>
+          <label class="radio-opt"><input type="radio" name="rw" value="Still learning"/> Still Learning</label>
+        </div>
+      </div>
+      <button class="btn-primary full" onclick="goToDashboard('student')">Go to Dashboard →</button>
+    </div>
+
+    <!-- Step 3b: Client Onboarding -->
+    <div id="authStep3C" class="auth-step">
+      <h2>💼 Tell us your needs</h2>
+      <p>We'll help you find the right talent</p>
+      <div class="form-group">
+        <label>Type of work you need</label>
+        <div class="tag-group" id="workTags">
+          <span class="tag" onclick="toggleTag(this)">Web Dev</span>
+          <span class="tag" onclick="toggleTag(this)">Design</span>
+          <span class="tag" onclick="toggleTag(this)">Content</span>
+          <span class="tag" onclick="toggleTag(this)">Data Entry</span>
+          <span class="tag" onclick="toggleTag(this)">Video</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Preferred Candidates</label>
+        <div class="radio-group">
+          <label class="radio-opt"><input type="radio" name="pref" value="Beginner"/> Beginner</label>
+          <label class="radio-opt"><input type="radio" name="pref" value="Experienced"/> Experienced</label>
+          <label class="radio-opt"><input type="radio" name="pref" value="Any"/> Any</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Describe a typical project</label>
+        <textarea class="form-input" placeholder="e.g. Build a portfolio website for college project..." rows="3"></textarea>
+      </div>
+      <button class="btn-primary full" onclick="goToDashboard('client')">Go to Dashboard →</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ========== STUDENT DASHBOARD ========== -->
+<section id="studentDash" class="section dashboard">
+  <div class="dash-nav">
+    <div class="nav-logo">
+      <div class="logo-circle">ST</div>
+      <span class="logo-text">SkillThali</span>
+    </div>
+    <div class="dash-nav-links">
+      <a href="#" class="active">Dashboard</a>
+      <a href="#">My Tasks</a>
+      <a href="#">Earnings</a>
+    </div>
+    <div class="profile-icon" onclick="toggleProfile()">
+      <div class="avatar">SK</div>
+    </div>
+  </div>
+
+  <!-- Profile Dropdown -->
+  <div id="profileDrop" class="profile-drop hidden">
+    <div class="profile-card-inner">
+      <div class="avatar lg">SK</div>
+      <h3>Sakshi Kulkarni</h3>
+      <p>sakshi@college.edu</p>
+      <div class="profile-stats">
+        <div class="ps"><span class="ps-val">12</span><span class="ps-label">Completed</span></div>
+        <div class="ps"><span class="ps-val">3</span><span class="ps-label">Active</span></div>
+        <div class="ps"><span class="ps-val">⭐ 4.8</span><span class="ps-label">Rating</span></div>
+        <div class="ps"><span class="ps-val">₹8,400</span><span class="ps-label">Earned</span></div>
+      </div>
+      <button class="btn-ghost-sm" onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <div class="dash-body">
+
+    <!-- Greeting -->
+    <div class="dash-greeting">
+      <h2>Good morning, Sakshi 👋</h2>
+      <p>You have <strong>3 active tasks</strong> and <strong>7 new opportunities</strong> waiting!</p>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="stats-row">
+      <div class="stat-pill">📋 <strong>3</strong> Active Tasks</div>
+      <div class="stat-pill">✅ <strong>12</strong> Completed</div>
+      <div class="stat-pill">⭐ <strong>4.8</strong> Rating</div>
+      <div class="stat-pill">💰 <strong>₹8,400</strong> Earned</div>
+    </div>
+
+    <!-- Active Tasks -->
+    <div class="dash-section">
+      <h3>🔥 Active Tasks</h3>
+      <div class="task-list">
+        <div class="task-card active-task">
+          <div class="task-info">
+            <span class="task-cat">💻 CodeThali</span>
+            <h4>Portfolio Website for Rahul Mehta</h4>
+            <p>Build a 3-page responsive portfolio</p>
+          </div>
+          <div class="task-meta">
+            <span class="budget">₹1,200</span>
+            <span class="deadline">Due: 3 days</span>
+            <div class="progress-bar"><div style="width:65%"></div></div>
+          </div>
+        </div>
+        <div class="task-card active-task">
+          <div class="task-info">
+            <span class="task-cat">🎨 Creatix</span>
+            <h4>Logo Design for StartupX</h4>
+            <p>Minimalist logo with 3 colour variants</p>
+          </div>
+          <div class="task-meta">
+            <span class="budget">₹800</span>
+            <span class="deadline">Due: 5 days</span>
+            <div class="progress-bar"><div style="width:40%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Filter + Available Tasks -->
+    <div class="dash-section">
+      <div class="filter-bar">
+        <h3>🌟 Available Tasks</h3>
+        <div class="filter-tabs">
+          <button class="ftab active" onclick="filterTasks('all',this)">All</button>
+          <button class="ftab" onclick="filterTasks('codethali',this)">💻 CodeThali</button>
+          <button class="ftab" onclick="filterTasks('creatix',this)">🎨 Creatix</button>
+          <button class="ftab" onclick="filterTasks('quickbites',this)">⚡ QuickBites</button>
+          <button class="ftab" onclick="filterTasks('teamup',this)">🤝 TeamUp</button>
+        </div>
+      </div>
+      <div id="availableTasks" class="task-grid"></div>
+    </div>
+
+  </div>
+
+  <!-- Task Detail Modal -->
+  <div id="taskModal" class="modal-overlay hidden">
+    <div class="modal-box task-detail">
+      <button class="modal-close" onclick="closeTaskModal()">✕</button>
+      <div id="taskDetailContent"></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ========== CLIENT DASHBOARD ========== -->
+<section id="clientDash" class="section dashboard">
+  <div class="dash-nav">
+    <div class="nav-logo">
+      <div class="logo-circle">ST</div>
+      <span class="logo-text">SkillThali</span>
+    </div>
+    <div class="dash-nav-links">
+      <a href="#" class="active">Dashboard</a>
+      <a href="#">My Posts</a>
+      <a href="#">Applicants</a>
+    </div>
+    <div class="profile-icon" onclick="toggleClientProfile()">
+      <div class="avatar">RC</div>
+    </div>
+  </div>
+
+  <div class="dash-body">
+
+    <div class="dash-greeting">
+      <h2>Hello, Rahul 👋</h2>
+      <p>You have <strong>2 active projects</strong>. Post a new task to find talent!</p>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-pill">📌 <strong>2</strong> Active Projects</div>
+      <div class="stat-pill">✅ <strong>5</strong> Completed</div>
+      <div class="stat-pill">👥 <strong>14</strong> Applicants</div>
+    </div>
+
+    <!-- Post Task Button -->
+    <div class="dash-section">
+      <button class="btn-primary lg" onclick="openPostTask()">+ Post New Task</button>
+    </div>
+
+    <!-- Posted Tasks -->
+    <div class="dash-section">
+      <h3>📌 Active Projects</h3>
+      <div class="task-grid client-tasks" id="clientPostedTasks"></div>
+    </div>
+
+    <!-- Completed -->
+    <div class="dash-section">
+      <h3>✅ Completed Projects</h3>
+      <div class="task-list">
+        <div class="task-card">
+          <div class="task-info">
+            <span class="task-cat">⚡ QuickBites</span>
+            <h4>Resume Redesign</h4>
+            <p>Completed by Priya S. — Rated ⭐ 5.0</p>
+          </div>
+          <div class="task-meta"><span class="budget">₹500</span><span class="status done">Done</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Post Task Modal -->
+  <div id="postTaskModal" class="modal-overlay hidden">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closePostTask()">✕</button>
+      <h2>Post a New Task</h2>
+      <p>Fill in details so students can find and apply</p>
+      <div class="form-group"><input type="text" id="taskTitle" placeholder="Task Title" class="form-input"/></div>
+      <div class="form-group">
+        <select id="taskCategory" class="form-input">
+          <option value="">Select Category</option>
+          <option value="codethali">💻 CodeThali</option>
+          <option value="creatix">🎨 Creatix</option>
+          <option value="quickbites">⚡ QuickBites</option>
+          <option value="teamup">🤝 TeamUp</option>
+        </select>
+      </div>
+      <div class="form-group"><input type="text" id="taskBudget" placeholder="Budget (₹)" class="form-input"/></div>
+      <div class="form-group"><input type="text" id="taskSkills" placeholder="Required Skills (comma separated)" class="form-input"/></div>
+      <div class="form-group"><textarea id="taskDesc" class="form-input" rows="3" placeholder="Describe the task..."></textarea></div>
+      <button class="btn-primary full" onclick="submitTask()">Post Task →</button>
+    </div>
+  </div>
+
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>
